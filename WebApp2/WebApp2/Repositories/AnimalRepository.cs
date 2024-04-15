@@ -1,6 +1,6 @@
 ﻿namespace WebApp2.Repositories;
 
-public class AnimalRepository
+public class AnimalRepository : IAnimalRepository
 {
     
 }
