@@ -1,7 +1,12 @@
-﻿namespace WebApp2.Repositories;
+﻿using WebApp2.Models;
+
+namespace WebApp2.Repositories;
 
 public interface IAnimalRepository
 {
-    //Sql Connect
-    //"Data Source=db-mssql;Initial Catalog=2019SBD;Integrated Security=True"
+    IEnumerable<Animal> GetAnimals(String orderBy);
+    int CreateAnimal();
+    Animal GetAnimal(int idAnimal);
+    int UpdateAnimal(Animal animal);
+    int DeleteAnimal(int idAnimal);
 }
