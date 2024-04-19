@@ -16,13 +16,18 @@ public class AnimalRepository : IAnimalRepository
 
     public IEnumerable<Animal> GetAnimals(String orderBy)
     {
-        using var con = new SqlConnection(_configuration["Data Source=db-mssql;Initial Catalog=2019SBD;Integrated Security=True;Column Encryption Setting=enabled;"]);
+        using var con = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]);
         con.Open();
 
         using var sqlCmd = new SqlCommand();
         sqlCmd.Connection = con;
-        sqlCmd.CommandText = "SELECT IdAnimal, Name, Description, Category, Area FROM Animal ORDER BY " + orderBy;
 
+        if (orderBy.Equals("IdAnimal") || orderBy.Equals("Name") || orderBy.Equals("Description") || orderBy.Equals("Category") || orderBy.Equals("Area"))
+        {
+            sqlCmd.CommandText = "SELECT IdAnimal, Name, Description, Category, Area FROM Animal ORDER BY " + orderBy;
+
+        }
+        
         var dataReader = sqlCmd.ExecuteReader();
         var animals = new List<Animal>();
         while (dataReader.Read())
