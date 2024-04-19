@@ -16,24 +16,23 @@ public class AnimalService : IAnimalService
     {
         return _animalRepository.GetAnimals(orderBy);
     }
-
-    public int CreateAnimal()
+    public IEnumerable<Animal> GetAnimals()
     {
-        throw new NotImplementedException();
+        return _animalRepository.GetAnimals();
     }
 
-    public Animal? GetAnimal(int idAnimal)
+    public int CreateAnimal(Animal animal)
     {
-        throw new NotImplementedException();
+        return _animalRepository.CreateAnimal(animal);
     }
 
-    public int UpdateAnimal(Animal animal)
+    public int UpdateAnimal(int idAnimal, Animal animal)
     {
-        throw new NotImplementedException();
+        return _animalRepository.UpdateAnimal(idAnimal, animal);
     }
 
     public int DeleteAnimal(int idAnimal)
     {
-        throw new NotImplementedException();
+        return _animalRepository.DeleteAnimal(idAnimal);
     }
 }
